@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Edge | Client Dashboard</title>
+
+<link rel="stylesheet" href="client-dashboard.css">
+
+<!-- Icons -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<!-- =====================================================
+     MOBILE OVERLAY
+===================================================== -->
+  <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+  <!-- =====================================================
+     SIDEBAR
+===================================================== -->
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="sidebar-brand">
+
+    <div class="brand-logo" aria-hidden="true">
+        RE
+    </div>
+
+    <div>
+        <h2>ROYAL EDGE</h2>
+        <span>BARBER</span>
+    </div>
+
+</div>
+
+    <!-- Customer mini profile -->
+<div class="sidebar-profile">
+
+    <div class="avatar" aria-hidden="true">
+        M
+    </div>
+
+    <div>
+        <strong id="sideCustomerName">Melaku</strong>
+        <small id="sideMembership">Gold Member</small>
+    </div>
+
+</div>
+
+    <!-- Navigation -->
+<nav class="sidebar-nav" aria-label="Dashboard sections">
+
+    <p class="nav-title" id="main-nav-title">MAIN</p>
+
+    <a href="#overview" class="nav-link active"
+       data-section="overview"
+       aria-current="page"
+       aria-controls="overview">
+        <i class="fa-solid fa-chart-pie" aria-hidden="true"></i>
+        <span>Overview</span>
+    </a>
+
+
+    <a href="#profile" class="nav-link"
+       data-section="profile"
+       aria-controls="profile">
+        <i class="fa-solid fa-user" aria-hidden="true"></i>
+        <span>My Profile</span>
+    </a>
+ <a href="#notifications" class="nav-link"
+       data-section="notifications"
+       aria-controls="notifications">
+        <i class="fa-solid fa-bell" aria-hidden="true"></i>
+        <span>Notifications</span>
+        <b class="notification-count" aria-label="3 unread notifications">3</b>
+    </a>
+
+
+    <p class="nav-title">APPOINTMENTS</p>
+
+    <a href="#book" class="nav-link"
+       data-section="book"
+       aria-controls="book">
+        <i class="fa-solid fa-scissors" aria-hidden="true"></i>
+        <span>Book a Haircut</span>
+    </a>
+
+   <a href="#appointments" class="nav-link"
+       data-section="appointments"
+       aria-controls="appointments">
+        <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+        <span>My Appointments</span>
+    </a>
+
+
+    <p class="nav-title">CUSTOMER ACTIVITY</p>
+
+    <a href="#visits" class="nav-link"
+       data-section="visits"
+       aria-controls="visits">
+        <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
+        <span>Visit History</span>
+    </a>
+
+
+    <a href="#payments" class="nav-link"
+       data-section="payments"
+       aria-controls="payments">
+        <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+        <span>Payment History</span>
+    </a>
+
+   <a href="#referrals" class="nav-link"
+       data-section="referrals"
+       aria-controls="referrals">
+        <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+        <span>Refer Friends</span>
+    </a>
+
+
+    <p class="nav-title">ROYAL EDGE BENEFITS</p>
+
+    <a href="#membership" class="nav-link"
+       data-section="membership"
+       aria-controls="membership">
+        <i class="fa-solid fa-id-card" aria-hidden="true"></i>
+        <span>Membership Card</span>
+    </a>
+
+  <a href="#rewards" class="nav-link"
+       data-section="rewards"
+       aria-controls="rewards">
+        <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+        <span>Rewards & Points</span>
+    </a>
+
+
+    <a href="#feedback" class="nav-link"
+       data-section="feedback"
+       aria-controls="feedback">
+        <i class="fa-solid fa-star" aria-hidden="true"></i>
+        <span>Feedback</span>
+    </a>
+
+  <p class="nav-title">ACCOUNT</p>
+
+    <a href="#settings" class="nav-link"
+       data-section="settings"
+       aria-controls="settings">
+        <i class="fa-solid fa-gear" aria-hidden="true"></i>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+
+<!-- Logout -->
+<button class="logout-btn" id="logoutBtn" type="button">
+    <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+    <span>Logout</span>
+</button>
+</aside>
+
+
+  <!-- =====================================================
+     MAIN AREA
+===================================================== -->
+<main class="main">
+  <!-- TOP HEADER -->
+<header class="topbar">
+
+    <button class="mobile-menu" id="mobileMenu" type="button"
+            aria-label="Open navigation menu"
+            aria-controls="sidebar"
+            aria-expanded="false">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+
+
+    <div class="page-heading">
+
+        <h1 id="pageTitle">
+            Overview
+        </h1>
+
+        <p id="pageSubtitle">
+            Welcome back to Royal Edge Barber
+        </p>
+      </div>
+
+
+    <div class="top-actions">
+
+        <button class="top-icon"
+                type="button"
+                data-section="notifications"
+                aria-label="View notifications"
+                aria-controls="notifications">
+            <i class="fa-solid fa-bell" aria-hidden="true"></i>
+            <span class="top-notification-dot" aria-label="Unread notifications"></span>
+        </button>
+      <button class="top-profile"
+                type="button"
+                aria-label="Open profile menu"
+                aria-haspopup="menu"
+                aria-expanded="false">
+
+            <div class="avatar small" aria-hidden="true">
+                M
+            </div>
+
+            <div class="top-profile-text">
+
+                <strong id="topCustomerName">
+                    Melaku
+                </strong>
+
+                <small>
+                    Gold Member
+                </small>
+
+            </div>
+<i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+
+        </button>
+
+    </div>
+
+</header>
+<!-- =================================================
+     CONTENT
+================================================= -->
+  
+<div class="content">
+  
+  <!-- =====================================================
+     OVERVIEW
+===================================================== -->
+  
+  <section class="dashboard-section active-section"
+         id="overview"
+         aria-labelledby="pageTitle">
+  
+<div class="welcome-banner">
+
+    <div class="welcome-content">
+
+        <span class="welcome-small">
+            WELCOME BACK
+        </span>
+
+        <h2>
+            Hello, <span id="welcomeName">Melaku</span> 👋
+        </h2>
+
+        <p>
+            Manage your appointments, rewards,
+            membership and Royal Edge visits from one place.
+        </p>
+         <button class="gold-btn"
+                type="button"
+                data-section="book"
+                aria-controls="book">
+            <i class="fa-solid fa-scissors" aria-hidden="true"></i>
+            <span>Book a Haircut</span>
+        </button>
+
+    </div>
+
+
+    <div class="welcome-decoration" aria-hidden="true">
+        <i class="fa-solid fa-scissors"></i>
+    </div>
+
+</div>
+    <!-- STAT CARDS -->
+<div class="stats-grid" aria-label="Dashboard statistics">
+
+    <div class="stat-card">
+
+        <div class="stat-icon gold" aria-hidden="true">
+            <i class="fa-solid fa-scissors"></i>
+        </div>
+
+        <div>
+            <span>Total Visits</span>
+            <h3>24</h3>
+            <small>+3 this month</small>
+        </div>
+
+    </div>
+   <div class="stat-card">
+
+        <div class="stat-icon purple" aria-hidden="true">
+            <i class="fa-solid fa-star"></i>
+        </div>
+
+        <div>
+            <span>Reward Points</span>
+            <h3>2,450</h3>
+            <small>+180 this month</small>
+        </div>
+
+    </div>
+<div class="stat-card">
+
+        <div class="stat-icon green" aria-hidden="true">
+            <i class="fa-solid fa-wallet"></i>
+        </div>
+
+        <div>
+            <span>Total Spent</span>
+            <h3>5,400 ETB</h3>
+            <small>This year</small>
+        </div>
+
+    </div>
+  
+ <div class="stat-card">
+
+        <div class="stat-icon blue" aria-hidden="true">
+            <i class="fa-solid fa-gem"></i>
+        </div>
+
+        <div>
+            <span>Membership</span>
+            <h3>Gold</h3>
+            <small>10% discount</small>
+        </div>
+
+    </div>
+
+</div>
+   <!-- OVERVIEW GRID -->
+<div class="overview-grid">
+
+
+    <!-- NEXT APPOINTMENT -->
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+
+            <div>
+                <span class="card-label">
+                    YOUR NEXT VISIT
+                </span>
+
+                <h3>
+                    Next Appointment
+                </h3>
+            </div>
+  <button class="text-btn"
+                    type="button"
+                    data-section="appointments"
+                    aria-controls="appointments">
+                View All
+            </button>
+
+        </div>
+       <div class="appointment-preview"
+             aria-label="Next appointment: Haircut and Beard on October 18 at 4:00 PM">
+
+            <div class="appointment-date">
+
+                <strong>18</strong>
+                <span>OCT</span>
+
+            </div>
+
+
+            <div class="appointment-details">
+
+                <h4>
+                    Haircut + Beard
+                </h4>
+                   <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                    <span>4:00 PM</span>
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    <span>Royal Edge Barber</span>
+                </p>
+
+            </div>
+         
+            <span class="status confirmed">
+                Confirmed
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- REWARDS PREVIEW -->
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+
+            <div>
+                <span class="card-label">
+                    ROYAL REWARDS
+                </span>
+ <h3>
+                    Points Progress
+                </h3>
+            </div>
+
+            <button class="text-btn"
+                    type="button"
+                    data-section="rewards"
+                    aria-controls="rewards">
+                Details
+            </button>
+
+        </div>
+
+
+        <div class="reward-preview">
+
+            <div class="reward-circle"
+                 role="img"
+                 aria-label="2,450 reward points">
+                <strong>2,450</strong>
+                <span>POINTS</span>
+            </div>
+           <div class="reward-progress-content">
+
+                <h4>
+                    550 points to Platinum
+                </h4>
+
+                <div class="progress"
+                     role="progressbar"
+                     aria-label="Reward progress toward Platinum"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     aria-valuenow="82"
+                     aria-valuetext="82 percent complete">
+                    <div class="progress-fill"
+                         style="width:82%">
+                    </div>
+                </div>
+                          to unlock more benefits.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MEMBERSHIP -->
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+ <div>
+                <span class="card-label">
+                    MEMBERSHIP
+                </span>
+
+                <h3>
+                    Gold Member
+                </h3>
+
+            </div>
+
+            <button class="text-btn"
+                    type="button"
+                    data-section="membership"
+                    aria-controls="membership">
+                View Card
+                </button>
+
+        </div>
+
+
+        <div class="membership-mini">
+
+            <div class="mini-card-logo" aria-hidden="true">
+                RE
+            </div>
+
+            <div>
+                <strong>
+                    Royal Edge Gold
+                </strong>
+
+                <p>
+                    10% service discount
+                </p>
+ <small>
+                    Member ID: RE-10245
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- REFERRAL -->
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+
+            <div>
+                <span class="card-label">
+                    REFERRAL PROGRAM
+                </span>
+              <h3>
+                    Refer & Earn
+                </h3>
+
+            </div>
+
+            <button class="text-btn"
+                    type="button"
+                    data-section="referrals"
+                    aria-controls="referrals">
+                Details
+            </button>
+
+        </div>
+       <p class="card-description">
+            Invite your friends to Royal Edge
+            and earn reward points.
+        </p>
+
+
+        <div class="referral-mini">
+
+            <div>
+                <span>Your Referral ID</span>
+
+                <strong>
+                    RE-MELAKU25
+                </strong>
+            </div>
+
+            <button id="copyReferral"
+                    type="button"
+                    aria-label="Copy referral ID RE-MELAKU25">
+                <i class="fa-regular fa-copy" aria-hidden="true"></i>
+            </button>
+           </div>
+
+    </div>
+
+</div>
+</section>
+  
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+<section class="dashboard-section" id="profile" aria-labelledby="profile-heading">
+  <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            ACCOUNT
+        </span>
+
+        <h2 id="profile-heading">My Profile</h2>
+
+        <p>
+            Manage your personal information.
+        </p>
+    </div>
+
+    <button class="gold-btn" id="editProfileBtn" type="button">
+        <i class="fa-solid fa-pen" aria-hidden="true"></i>
+        <span>Edit Profile</span>
+    </button>
+
+</div>
+  <div class="profile-layout">
+
+    <div class="dashboard-card profile-card-main">
+
+        <div class="profile-large">
+
+            <div class="large-avatar" aria-hidden="true">
+                M
+            </div>
+
+            <h3 id="profileName">
+                Melaku Melie
+            </h3>
+
+            <span class="member-badge">
+                GOLD MEMBER
+            </span>
+
+            <p>
+                Customer ID: RE-10245
+            </p>
+
+        </div>
+  <div class="profile-details">
+
+            <div class="detail-item">
+                <span>Full Name</span>
+                <strong>Melaku Melie</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Phone Number</span>
+                <strong>+251 9XX XXX XXX</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Email</span>
+                <strong>melaku@example.com</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Referral ID</span>
+                <strong>RE-MELAKU25</strong>
+            </div>
+      <div class="detail-item">
+                <span>Member Since</span>
+                <strong>January 2026</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Membership</span>
+                <strong>Gold</strong>
+            </div>
+
+        </div>
+
+    </div>
+   <div class="dashboard-card">
+
+        <div class="card-heading">
+            <h3>Account Security</h3>
+        </div>
+
+        <div class="security-list">
+
+            <div>
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+
+                <span>
+                    Password
+                    <small>Last changed recently</small>
+                </span>
+
+                <button class="outline-btn" type="button">
+                    Change
+                </button>
+            </div>
+           <div>
+                <i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>
+
+                <span>
+                    Phone
+                    <small>Verified</small>
+                </span>
+
+                <b class="verified">
+                    Verified
+                </b>
+
+            </div>
+
+
+            <div>
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+
+                <span>
+                    Account protection
+                    <small>Your account is secure</small>
+                </span>
+       <i class="fa-solid fa-check verified-icon"
+                   aria-label="Account is secure"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </section>
+  
+  <!-- =====================================================
+     NOTIFICATIONS
+===================================================== -->
+
+<section class="dashboard-section"
+         id="notifications"
+         aria-labelledby="notifications-heading">
+  <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            UPDATES
+        </span>
+
+        <h2 id="notifications-heading">Notifications</h2>
+
+        <p>
+            Stay updated with your Royal Edge activity.
+        </p>
+    </div>
+
+    <button class="outline-btn" id="markRead" type="button">
+        Mark all as read
+    </button>
+
+</div>
+  <div class="notification-list" aria-live="polite">
+
+    <div class="notification unread"
+         role="article"
+         aria-label="Unread notification: Appointment confirmed">
+
+        <div class="notification-icon green-bg" aria-hidden="true">
+            <i class="fa-solid fa-calendar-check"></i>
+        </div>
+
+        <div class="notification-body">
+            <h4>Appointment confirmed</h4>
+            <p>
+                Your Haircut + Beard appointment
+                is confirmed for October 18 at 4:00 PM.
+            </p>
+            <small>2 hours ago</small>
+        </div>
+
+    </div>
+    <div class="notification unread"
+         role="article"
+         aria-label="Unread notification: 180 points added">
+
+        <div class="notification-icon gold-bg" aria-hidden="true">
+            <i class="fa-solid fa-star"></i>
+        </div>
+
+        <div class="notification-body">
+            <h4>180 points added</h4>
+            <p>
+                You earned 180 reward points
+                from your recent visit.
+            </p>
+            <small>Yesterday</small>
+        </div>
+
+    </div>
+  <div class="notification unread"
+         role="article"
+         aria-label="Unread notification: New reward available">
+
+        <div class="notification-icon blue-bg" aria-hidden="true">
+            <i class="fa-solid fa-gift"></i>
+        </div>
+
+        <div class="notification-body">
+            <h4>New reward available</h4>
+            <p>
+                You can now redeem a free beard trim.
+            </p>
+            <small>2 days ago</small>
+        </div>
+
+    </div>
+    <div class="notification"
+         role="article"
+         aria-label="Notification: Gold membership active">
+
+        <div class="notification-icon purple-bg" aria-hidden="true">
+            <i class="fa-solid fa-gem"></i>
+        </div>
+
+        <div class="notification-body">
+            <h4>Gold membership active</h4>
+            <p>
+                Enjoy your Gold membership benefits.
+            </p>
+            <small>1 week ago</small>
+        </div>
+
+    </div>
+
+</div>
+  </section>
+
+  <!-- =====================================================
+     BOOK HAIRCUT
+===================================================== -->
+
+<section class="dashboard-section" id="book" aria-labelledby="book-heading">
+  <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            ROYAL EDGE SERVICES
+        </span>
+
+        <h2 id="book-heading">Book a Haircut</h2>
+
+        <p>
+            Choose your service, barber and preferred time.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="booking-layout">
+
+    <div class="dashboard-card">
+
+        <form id="bookingForm">
+
+            <div class="form-group">
+
+                <label for="service">
+                    Select Service
+                </label>
+
+                <select id="service" name="service" required>
+
+                    <option value="">
+                        Choose a service
+                    </option>
+
+                    <option value="Haircut">
+                        Haircut — 200 ETB
+                    </option>
+                     <option value="Beard">
+                        Beard — 150 ETB
+                    </option>
+
+                    <option value="Haircut + Beard">
+                        Haircut + Beard — 300 ETB
+                    </option>
+
+                    <option value="Kids Haircut">
+                        Kids Haircut — 150 ETB
+                    </option>
+
+                    <option value="Hair Wash">
+                        Hair Wash — 100 ETB
+                    </option>
+
+                    <option value="Premium Package">
+                        Premium Package — 500 ETB
+                    </option>
+
+                </select>
+               </div>
+
+
+            <div class="form-group">
+
+                <label for="barber">
+                    Choose Barber
+                </label>
+
+                <select id="barber" name="barber" required>
+
+                    <option value="">
+                        Select barber
+                    </option>
+
+                    <option value="Any Available Barber">
+                        Any Available Barber
+                    </option>
+
+                    <option value="Barber 1">
+                        Barber 1
+                    </option>
+                  <option value="Barber 2">
+                        Barber 2
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="two-columns">
+
+                <div class="form-group">
+
+                    <label for="bookingDate">Date</label>
+
+                    <input type="date"
+                           id="bookingDate"
+                           name="bookingDate"
+                           required>
+
+                </div>
+              <div class="form-group">
+
+                    <label for="bookingTime">Time</label>
+
+                    <select id="bookingTime" name="bookingTime" required>
+
+                        <option value="">
+                            Choose time
+                        </option>
+
+                        <option value="9:00 AM">9:00 AM</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="11:00 AM">11:00 AM</option>
+                        <option value="1:00 PM">1:00 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="3:00 PM">3:00 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="6:00 PM">6:00 PM</option>
+
+                    </select>
+                    </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="specialRequest">
+                    Special Request
+                </label>
+
+                <textarea
+                    id="specialRequest"
+                    name="specialRequest"
+                    placeholder="Tell us anything we should know..."></textarea>
+
+            </div>
+          <button class="gold-btn full-btn"
+                    type="submit">
+
+                <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i>
+
+                <span>Confirm Appointment</span>
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="dashboard-card service-info">
+
+        <div class="card-heading">
+            <h3>Booking Information</h3>
+        </div>
+
+        <ul>
+           <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>Please arrive 5–10 minutes early.</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>You can cancel or reschedule your booking.</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>Reward points are added after your visit.</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>Gold members receive 10% discount.</span>
+            </li>
+             <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>You will receive an appointment notification.</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+</section>
+
+  <!-- =====================================================
+     APPOINTMENTS
+===================================================== -->
+  <section class="dashboard-section"
+         id="appointments"
+         aria-labelledby="appointments-heading">
+    <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            BOOKINGS
+        </span>
+
+        <h2 id="appointments-heading">My Appointments</h2>
+
+        <p>
+            Manage your upcoming and previous appointments.
+        </p>
+
+    </div>
+        <button class="gold-btn"
+            type="button"
+            data-section="book"
+            aria-controls="book">
+
+        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+        <span>New Appointment</span>
+
+    </button>
+
+</div>
+    <div class="tabs" role="tablist" aria-label="Appointment status">
+
+    <button class="tab active"
+            type="button"
+            role="tab"
+            aria-selected="true">
+        Upcoming
+    </button>
+
+    <button class="tab"
+            type="button"
+            role="tab"
+            aria-selected="false">
+        Completed
+    </button>
+       <button class="tab"
+            type="button"
+            role="tab"
+            aria-selected="false">
+        Cancelled
+    </button>
+
+</div>
+
+
+<div class="appointment-list">
+
+    <div class="appointment-row"
+         aria-label="Confirmed Haircut and Beard appointment on October 18 at 4:00 PM">
+
+        <div class="appointment-date big">
+
+            <strong>18</strong>
+            <span>OCT</span>
+
+        </div>
+  <div class="appointment-info-main">
+
+            <h3>
+                Haircut + Beard
+            </h3>
+
+            <p>
+                <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                <span>4:00 PM</span>
+            </p>
+
+            <p>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                <span>Any Available Barber</span>
+            </p>
+
+        </div>
+
+        <div class="appointment-price">
+            300 ETB
+        </div>
+
+        <span class="status confirmed">
+            Confirmed
+        </span>
+
+        <div class="appointment-actions">
+
+            <button class="outline-btn" type="button">
+                Reschedule
+            </button>
+
+            <button class="danger-btn" type="button">
+                Cancel
+            </button>
+             
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+  <!-- =====================================================
+     VISIT HISTORY
+===================================================== -->
+  <section class="dashboard-section"
+         id="visits"
+         aria-labelledby="visits-heading">
+    <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            HISTORY
+        </span>
+
+        <h2 id="visits-heading">Visit History</h2>
+
+        <p>
+            View all your Royal Edge visits.
+        </p>
+
+    </div>
+
+</div>
+<div class="dashboard-card table-card">
+
+    <div class="table-wrapper">
+
+        <table>
+            <caption class="sr-only">Royal Edge visit history</caption>
+
+            <thead>
+
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Barber</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Points</th>
+                    <th scope="col">Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+               <tr>
+                    <td>02 Oct 2026</td>
+                    <td>Haircut</td>
+                    <td>Barber 1</td>
+                    <td>200 ETB</td>
+                    <td>100</td>
+                    <td>
+                        <span class="status completed">
+                            Completed
+                        </span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>18 Sep 2026</td>
+                    <td>Haircut + Beard</td>
+                    <td>Barber 2</td>
+                    <td>300 ETB</td>
+                    <td>150</td>
+                    <td>
+                        <span class="status completed">
+                            Completed
+                                                  </span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>03 Sep 2026</td>
+                    <td>Haircut</td>
+                    <td>Barber 1</td>
+                    <td>200 ETB</td>
+                    <td>100</td>
+                    <td>
+                        <span class="status completed">
+                            Completed
+                        </span>
+                    </td>
+                </tr>
+<tr>
+                    <td>03 Sep 2026</td>
+                    <td>Haircut</td>
+                    <td>Barber 1</td>
+                    <td>200 ETB</td>
+                    <td>100</td>
+                    <td>
+                        <span class="status completed">
+                            Completed
+                        </span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>21 Aug 2026</td>
+                    <td>Premium Package</td>
+                    <td>Barber 2</td>
+                    <td>500 ETB</td>
+                    <td>250</td>
+                    <td>
+                        <span class="status completed">
+                            Completed
+                        </span>
+                    </td>
+                </tr>
+                   </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+</section>
+<!-- =====================================================
+     PAYMENT HISTORY
+===================================================== -->
+<section class="dashboard-section"
+         id="payments"
+         aria-labelledby="payments-heading">
+<div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            FINANCIAL
+        </span>
+
+        <h2 id="payments-heading">Payment History</h2>
+
+        <p>
+            Track your Royal Edge payments and receipts.
+        </p>
+
+    </div>
+
+</div>
+<div class="payment-summary" aria-label="Payment summary">
+
+    <div class="summary-card">
+        <span>Total Spent</span>
+        <strong>5,400 ETB</strong>
+    </div>
+
+    <div class="summary-card">
+        <span>This Month</span>
+        <strong>700 ETB</strong>
+    </div>
+
+    <div class="summary-card">
+        <span>Transactions</span>
+        <strong>24</strong>
+    </div>
+
+</div>
+  
+
+
+<div class="dashboard-card table-card">
+
+    <div class="table-wrapper">
+
+        <table>
+            <caption class="sr-only">Royal Edge payment history</caption>
+
+            <thead>
+
+                <tr>
+                    <th scope="col">Transaction</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+  <tr>
+                    <td>#RE784521</td>
+                    <td>02 Oct</td>
+                    <td>Haircut</td>
+                    <td>200 ETB</td>
+                    <td>Cash</td>
+                    <td>
+                        <span class="status completed">
+                            Paid
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>#RE773421</td>
+                    <td>18 Sep</td>
+                    <td>Haircut + Beard</td>
+                    <td>300 ETB</td>
+                    <td>Telebirr</td>
+                    <td>
+                       <span class="status completed">
+                            Paid
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>#RE762211</td>
+                    <td>03 Sep</td>
+                    <td>Haircut</td>
+                    <td>200 ETB</td>
+                    <td>Cash</td>
+                    <td>
+                        <span class="status completed">
+                            Paid
+                        </span>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+  </div>
+
+</div>
+  </section>
+  <!-- =====================================================
+     REFERRALS
+===================================================== -->
+<section class="dashboard-section"
+         id="referrals"
+         aria-labelledby="referrals-heading">
+  <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            REFER & EARN
+        </span>
+
+        <h2 id="referrals-heading">Refer Friends</h2>
+
+        <p>
+            Invite friends and earn Royal Edge rewards.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="referral-hero">
+
+    <div>
+
+        <span>
+            YOUR REFERRAL ID
+        </span>
+
+        <h2>
+            RE-MELAKU25
+        </h2>
+
+        <p>
+            Share your referral link with your friends.
+        </p>
+
+    </div>
+
+
+    <button class="gold-btn"
+            id="copyReferralLarge"
+            type="button"
+            aria-label="Copy referral link for RE-MELAKU25">
+
+        <i class="fa-solid fa-copy" aria-hidden="true"></i>
+        <span>Copy Referral Link</span>
+
+    </button>
+
+</div>
+
+
+<div class="stats-grid referral-stats" aria-label="Referral statistics">
+
+    <div class="stat-card">
+        <div class="stat-icon gold" aria-hidden="true">
+            <i class="fa-solid fa-user-plus"></i>
+        </div>
+
+        <div>
+            <span>Invited</span>
+            <h3>12</h3>
+        </div>
+    </div>
+
+
+    <div class="stat-card">
+        <div class="stat-icon green" aria-hidden="true">
+            <i class="fa-solid fa-user-check"></i>
+        </div>
+
+        <div>
+            <span>Successful</span>
+            <h3>8</h3>
+        </div>
+    </div>
+
+
+    <div class="stat-card">
+        <div class="stat-icon purple" aria-hidden="true">
+            <i class="fa-solid fa-star"></i>
+        </div>
+
+        <div>
+            <span>Points Earned</span>
+            <h3>800</h3>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="dashboard-card">
+
+    <div class="card-heading">
+        <h3>Referral History</h3>
+    </div>
+
+    <div class="referral-history">
+
+        <div>
+            <span>Friend A</span>
+            <small>Joined 01 Oct 2026</small>
+            <strong>+100 pts</strong>
+        </div>
+
+        <div>
+            <span>Friend B</span>
+            <small>Joined 20 Sep 2026</small>
+            <strong>+100 pts</strong>
+        </div>
+
+        <div>
+            <span>Friend C</span>
+            <small>Joined 05 Sep 2026</small>
+            <strong>+100 pts</strong>
+        </div>
+
+    </div>
+
+</div>
+</section>
+  <!-- =====================================================
+     MEMBERSHIP
+===================================================== -->
+  <section class="dashboard-section"
+         id="membership"
+         aria-labelledby="membership-heading">
+    <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            ROYAL EDGE MEMBERSHIP
+        </span>
+
+        <h2 id="membership-heading">Membership Card</h2>
+
+        <p>
+            Your digital Royal Edge membership card.
+        </p>
+
+    </div>
+
+    <button class="outline-btn" type="button">
+        <i class="fa-solid fa-download" aria-hidden="true"></i>
+        <span>Download Card</span>
+    </button>
+
+</div>
+
+
+<div class="membership-layout">
+
+    <div class="membership-card"
+         role="img"
+         aria-label="Royal Edge Gold membership card for Melaku Melie, member ID RE-10245, valid until December 2026">
+
+        <div class="membership-card-top">
+
+            <div class="membership-logo" aria-hidden="true">
+                RE
+            </div>
+
+            <span>
+                ROYAL EDGE BARBER
+            </span>
+
+        </div>
+
+
+        <div class="membership-card-middle">
+
+            <div class="member-avatar" aria-hidden="true">
+                M
+            </div>
+
+            <div>
+                <small>MEMBER</small>
+                <h2>Melaku Melie</h2>
+                <span>GOLD MEMBER</span>
+            </div>
+
+        </div>
+
+
+        <div class="membership-card-bottom">
+
+            <div>
+                <small>MEMBER ID</small>
+                <strong>RE-10245</strong>
+            </div>
+
+            <div>
+                <small>VALID UNTIL</small>
+                <strong>DEC 2026</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-card membership-benefits">
+
+        <div class="card-heading">
+            <h3>Gold Benefits</h3>
+        </div>
+
+        <ul>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>10% service discount</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>Priority booking</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>Birthday reward</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>Extra reward points</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>Special member promotions</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <span>Free holiday correction</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="dashboard-card membership-levels">
+
+    <div class="card-heading">
+        <h3>Membership Levels</h3>
+    </div>
+
+    <div class="level-grid">
+
+        <div class="level bronze">
+            <strong>BRONZE</strong>
+            <span>0 – 999 pts</span>
+        </div>
+
+        <div class="level silver">
+            <strong>SILVER</strong>
+            <span>1,000 – 1,999 pts</span>
+        </div>
+
+        <div class="level gold-level">
+            <strong>GOLD</strong>
+            <span>2,000 – 2,999 pts</span>
+        </div>
+
+        <div class="level platinum">
+            <strong>PLATINUM</strong>
+            <span>3,000+ pts</span>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+  <!-- =====================================================
+     REWARDS
+===================================================== -->
+  <section class="dashboard-section"
+         id="rewards"
+         aria-labelledby="rewards-heading">
+    <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            ROYAL REWARDS
+        </span>
+
+        <h2 id="rewards-heading">Rewards & Points</h2>
+
+        <p>
+            Earn points, unlock rewards and enjoy more benefits.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="reward-main-card">
+
+    <div class="reward-big-number">
+
+        <span>AVAILABLE POINTS</span>
+
+        <strong>2,450</strong>
+
+        <small>
+            Lifetime points: 3,120
+        </small>
+
+    </div>
+
+
+    <div class="reward-level">
+
+        <div class="level-title">
+
+            <span>Gold</span>
+
+            <strong>82%</strong>
+
+        </div>
+
+        <div class="progress large"
+             role="progressbar"
+             aria-label="Progress from Gold to Platinum membership"
+             aria-valuemin="0"
+             aria-valuemax="100"
+             aria-valuenow="82"
+             aria-valuetext="82 percent complete">
+            <div class="progress-fill"
+                 style="width:82%">
+            </div>
+        </div>
+
+        <p>
+            550 more points to Platinum
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="reward-ways">
+
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+            <h3>Ways to Earn Points</h3>
+        </div>
+
+        <div class="earn-item">
+            <i class="fa-solid fa-scissors" aria-hidden="true"></i>
+            <span>
+                Every haircut
+                <small>Earn 100 points</small>
+            </span>
+        </div>
+
+        <div class="earn-item">
+            <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+            <span>
+                Refer a friend
+                <small>Earn 100 points</small>
+            </span>
+        </div>
+
+        <div class="earn-item">
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <span>
+                Give feedback
+                <small>Earn 20 points</small>
+            </span>
+        </div>
+
+        <div class="earn-item">
+            <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+            <span>
+                Birthday bonus
+                <small>Earn 200 points</small>
+            </span>
+        </div>
+
+        <div class="earn-item">
+            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+            <span>
+                Visit regularly
+                <small>Bonus points available</small>
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+            <h3>Available Rewards</h3>
+        </div>
+
+        <div class="reward-item">
+
+            <div class="reward-item-icon" role="img" aria-label="Scissors">
+                ✂️
+            </div>
+
+            <div>
+                <strong>Free Haircut</strong>
+                <small>1,000 points</small>
+            </div>
+
+            <button class="outline-btn" type="button">
+                Redeem
+            </button>
+
+        </div>
+
+
+        <div class="reward-item">
+
+            <div class="reward-item-icon" role="img" aria-label="Beard">
+                🧔
+            </div>
+
+            <div>
+                <strong>Free Beard Trim</strong>
+                <small>500 points</small>
+            </div>
+
+            <button class="outline-btn" type="button">
+                Redeem
+            </button>
+
+        </div>
+
+
+        <div class="reward-item">
+
+            <div class="reward-item-icon" role="img" aria-label="Money">
+                💰
+            </div>
+
+            <div>
+                <strong>100 ETB Discount</strong>
+                <small>750 points</small>
+            </div>
+
+            <button class="outline-btn" type="button">
+                Redeem
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="dashboard-card">
+
+    <div class="card-heading">
+        <h3>Points History</h3>
+    </div>
+
+    <div class="points-history">
+
+        <div>
+            <span>
+                <strong>Haircut visit</strong>
+                <small>02 Oct 2026</small>
+            </span>
+
+            <b class="points-positive" aria-label="100 points earned">
+                +100
+            </b>
+        </div>
+
+        <div>
+            <span>
+                <strong>Referral bonus</strong>
+                <small>01 Oct 2026</small>
+            </span>
+
+            <b class="points-positive" aria-label="100 points earned">
+                +100
+            </b>
+        </div>
+
+        <div>
+            <span>
+                <strong>Reward redeemed</strong>
+                <small>25 Sep 2026</small>
+            </span>
+
+            <b class="points-negative" aria-label="500 points spent">
+                -500
+            </b>
+        </div>
+
+    </div>
+
+</div>
+</section>
+  <!-- =====================================================
+     FEEDBACK
+===================================================== -->
+ <section class="dashboard-section"
+         id="feedback"
+         aria-labelledby="feedback-heading">
+   <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            YOUR OPINION MATTERS
+        </span>
+
+        <h2 id="feedback-heading">Feedback</h2>
+
+        <p>
+            Help Royal Edge improve your experience.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="feedback-layout">
+
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+            <h3>Rate Your Experience</h3>
+        </div>
+
+
+        <form id="feedbackForm">
+
+            <div class="rating-area">
+
+                <p id="rating-label">Overall Experience</p>
+
+                <div class="stars"
+                     id="starRating"
+                     role="radiogroup"
+                     aria-labelledby="rating-label">
+
+                    <button type="button"
+                            data-rating="1"
+                            role="radio"
+                            aria-label="1 star"
+                            aria-checked="false">★</button>
+                    <button type="button"
+                            data-rating="2"
+                            role="radio"
+                            aria-label="2 stars"
+                            aria-checked="false">★</button>
+                    <button type="button"
+                            data-rating="3"
+                            role="radio"
+                            aria-label="3 stars"
+                            aria-checked="false">★</button>
+                    <button type="button"
+                            data-rating="4"
+                            role="radio"
+                            aria-label="4 stars"
+                            aria-checked="false">★</button>
+                    <button type="button"
+                            data-rating="5"
+                            role="radio"
+                            aria-label="5 stars"
+                            aria-checked="false">★</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="feedbackTopic">
+                    What did you like?
+                </label>
+
+                <select id="feedbackTopic" name="feedbackTopic">
+
+                    <option value="">
+                        Select an option
+                    </option>
+
+                    <option value="Haircut quality">
+                        Haircut quality
+                    </option>
+
+                    <option value="Barber service">
+                        Barber service
+                    </option>
+
+                    <option value="Cleanliness">
+                        Cleanliness
+                    </option>
+
+                    <option value="Waiting time">
+                        Waiting time
+                    </option>
+
+                    <option value="Customer service">
+                        Customer service
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="feedbackText">
+                    Your feedback
+                </label>
+
+                <textarea
+                    id="feedbackText"
+                    name="feedbackText"
+                    placeholder="Tell us about your experience..."
+                    required></textarea>
+
+            </div>
+
+
+            <button class="gold-btn"
+                    type="submit">
+
+                Submit Feedback
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+            <h3>Your Previous Feedback</h3>
+        </div>
+
+        <div class="previous-feedback">
+
+            <div class="feedback-item">
+
+                <div class="feedback-stars"
+                     role="img"
+                     aria-label="5 out of 5 stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    Excellent haircut and very good service.
+                </p>
+
+                <small>
+                    02 Oct 2026
+                </small>
+
+            </div>
+
+
+            <div class="feedback-item">
+
+                <div class="feedback-stars"
+                     role="img"
+                     aria-label="4 out of 5 stars">
+                    ★★★★☆
+                </div>
+
+                <p>
+                    Good service. I enjoyed my visit.
+                </p>
+
+                <small>
+                    18 Sep 2026
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+  <!-- =====================================================
+     SETTINGS
+===================================================== -->
+  
+<section class="dashboard-section"
+         id="settings"
+         aria-labelledby="settings-heading">
+  <div class="section-header">
+
+    <div>
+        <span class="section-kicker">
+            ACCOUNT
+        </span>
+
+        <h2 id="settings-heading">Settings</h2>
+
+        <p>
+            Manage your dashboard preferences.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="settings-list">
+
+    <div class="dashboard-card setting-row">
+
+        <div class="setting-icon" aria-hidden="true">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div>
+            <h3>Appointment Notifications</h3>
+            <p>
+                Receive appointment reminders.
+            </p>
+        </div>
+
+        <label class="switch">
+            <span class="sr-only">Enable appointment notifications</span>
+            <input type="checkbox"
+                   name="appointmentNotifications"
+                   checked>
+            <span aria-hidden="true"></span>
+        </label>
+
+    </div>
+
+
+    <div class="dashboard-card setting-row">
+
+        <div class="setting-icon" aria-hidden="true">
+            <i class="fa-solid fa-gift"></i>
+        </div>
+
+        <div>
+            <h3>Promotions & Offers</h3>
+            <p>
+                Receive Royal Edge special offers.
+            </p>
+        </div>
+
+        <label class="switch">
+            <span class="sr-only">Enable promotions and offers</span>
+            <input type="checkbox"
+                   name="promotionsOffers"
+                   checked>
+            <span aria-hidden="true"></span>
+        </label>
+
+    </div>
+
+
+    <div class="dashboard-card setting-row">
+
+        <div class="setting-icon" aria-hidden="true">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+
+        <div>
+            <h3>Change Password</h3>
+            <p>
+                Update your account password.
+            </p>
+        </div>
+
+        <button class="outline-btn" type="button">
+            Change
+        </button>
+
+    </div>
+
+
+    <div class="dashboard-card setting-row">
+
+        <div class="setting-icon danger-icon" aria-hidden="true">
+            <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <div>
+            <h3>Delete Account</h3>
+            <p>
+                Permanently delete your account.
+            </p>
+        </div>
+
+        <button class="danger-btn" type="button">
+            Delete
+        </button>
+
+    </div>
+
+</div>
+</section>
+</div>
+  </main>
+  <!-- =====================================================
+     TOAST MESSAGE
+===================================================== -->
+  <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+
+<span id="toastMessage">
+    Done
+</span>
+</div>
+  
+   <script src="only java script.js"></script>
+  
+</body>
+  </html>

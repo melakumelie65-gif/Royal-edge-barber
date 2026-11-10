@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Edge | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin-dashboard.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- =====================================================
+     MOBILE OVERLAY
+===================================================== -->
+<div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+<aside class="sidebar" id="sidebar" aria-label="Admin navigation">
+    <div class="sidebar-brand">
+        <div class="brand-logo" aria-hidden="true">RE</div>
+        <div>
+            <h2>ROYAL EDGE</h2>
+            <span>ADMIN</span>
+        </div>
+    </div>
+
+    <!-- Admin mini profile -->
+    <div class="sidebar-profile">
+        <div class="avatar" aria-hidden="true">A</div>
+        <div>
+            <strong id="sideAdminName">Admin</strong>
+            <small id="sideAdminRole">Manager</small>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav" aria-label="Admin dashboard sections">
+        <p class="nav-title">MAIN</p>
+
+        <a href="#overview" class="nav-link active"
+           data-section="overview"
+           aria-current="page"
+           aria-controls="overview">
+            <i class="fa-solid fa-chart-pie" aria-hidden="true"></i>
+            <span>Overview</span>
+        </a>
+
+        <a href="#appointments" class="nav-link"
+           data-section="appointments"
+           aria-controls="appointments">
+            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+            <span>Appointments</span>
+            <b class="notification-count" aria-label="5 pending appointments">5</b>
+        </a>
+
+        <a href="#customers" class="nav-link"
+           data-section="customers"
+           aria-controls="customers">
+            <i class="fa-solid fa-users" aria-hidden="true"></i>
+            <span>Customers</span>
+        </a>
+
+        <a href="#barbers" class="nav-link"
+           data-section="barbers"
+           aria-controls="barbers">
+            <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+            <span>Barbers</span>
+        </a>
+
+        <p class="nav-title">SERVICES</p>
+
+        <a href="#services" class="nav-link"
+           data-section="services"
+           aria-controls="services">
+            <i class="fa-solid fa-scissors" aria-hidden="true"></i>
+            <span>Services & Pricing</span>
+        </a>
+
+        <a href="#payments" class="nav-link"
+           data-section="payments"
+           aria-controls="payments">
+            <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+            <span>Payments</span>
+        </a>
+
+        <p class="nav-title">ENGAGEMENT</p>
+
+        <a href="#rewards" class="nav-link"
+           data-section="rewards"
+           aria-controls="rewards">
+            <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+            <span>Rewards Management</span>
+        </a>
+
+        <a href="#memberships" class="nav-link"
+           data-section="memberships"
+           aria-controls="memberships">
+            <i class="fa-solid fa-id-card" aria-hidden="true"></i>
+            <span>Memberships</span>
+        </a>
+
+        <a href="#feedback" class="nav-link"
+           data-section="feedback"
+           aria-controls="feedback">
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <span>Customer Feedback</span>
+        </a>
+
+        <a href="#notifications" class="nav-link"
+           data-section="notifications"
+           aria-controls="notifications">
+            <i class="fa-solid fa-bell" aria-hidden="true"></i>
+            <span>Notifications</span>
+            <b class="notification-count" aria-label="3 unread notifications">3</b>
+        </a>
+
+        <p class="nav-title">SYSTEM</p>
+
+        <a href="#reports" class="nav-link"
+           data-section="reports"
+           aria-controls="reports">
+            <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+            <span>Reports</span>
+        </a>
+
+        <a href="#settings" class="nav-link"
+           data-section="settings"
+           aria-controls="settings">
+            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+            <span>Settings</span>
+        </a>
+    </nav>
+
+    <!-- Logout -->
+    <button class="logout-btn" id="logoutBtn" type="button">
+        <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+        <span>Logout</span>
+    </button>
+</aside>
+
+<!-- =====================================================
+     MAIN AREA
+===================================================== -->
+<main class="main">
+
+    <!-- TOP HEADER -->
+    <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" type="button"
+                aria-label="Open navigation menu"
+                aria-controls="sidebar"
+                aria-expanded="false">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="page-heading">
+            <h1 id="pageTitle">Overview</h1>
+            <p id="pageSubtitle">Manage Royal Edge operations</p>
+        </div>
+
+        <div class="top-actions">
+            <button class="top-icon"
+                    type="button"
+                    data-section="notifications"
+                    aria-label="View notifications"
+                    aria-controls="notifications">
+                <i class="fa-solid fa-bell" aria-hidden="true"></i>
+                <span class="top-notification-dot" aria-label="Unread notifications"></span>
+            </button>
+
+            <button class="top-profile"
+                    type="button"
+                    aria-label="Open admin profile menu"
+                    aria-haspopup="menu"
+                    aria-expanded="false">
+                <div class="avatar small" aria-hidden="true">A</div>
+                <div class="top-profile-text">
+                    <strong id="topAdminName">Admin</strong>
+                    <small>Manager</small>
+                </div>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- =================================================
+         CONTENT
+    ================================================= -->
+    <div class="content">
+
+        <!-- =====================================================
+             OVERVIEW
+        ===================================================== -->
+        <section class="dashboard-section active-section"
+                 id="overview"
+                 aria-labelledby="pageTitle">
+
+            <div class="welcome-banner">
+                <div class="welcome-content">
+                    <span class="welcome-small">ADMIN CONTROL PANEL</span>
+                    <h2>Welcome back, <span id="welcomeAdminName">Admin</span> 👋</h2>
+                    <p>
+                        Manage appointments, customers, barbers,
+                        services, rewards and Royal Edge operations from one place.
+                    </p>
+                    <button class="gold-btn"
+                            type="button"
+                            data-section="appointments"
+                            aria-controls="appointments">
+                        <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+                        <span>View Today's Appointments</span>
+                    </button>
+                </div>
+                <div class="welcome-decoration" aria-hidden="true">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+            </div>
+
+            <!-- STAT CARDS -->
+            <div class="stats-grid" aria-label="Admin statistics">
+                <div class="stat-card">
+                    <div class="stat-icon gold" aria-hidden="true">
+                        <i class="fa-solid fa-calendar-day"></i>
+                    </div>
+                    <div>
+                        <span>Today's Appointments</span>
+                        <h3>18</h3>
+                        <small>5 pending confirmation</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple" aria-hidden="true">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <span>Total Customers</span>
+                        <h3>246</h3>
+                        <small>+12 this week</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green" aria-hidden="true">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <div>
+                        <span>Today's Revenue</span>
+                        <h3>4,200 ETB</h3>
+                        <small>+8% vs yesterday</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon blue" aria-hidden="true">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <span>Active Barbers</span>
+                        <h3>4</h3>
+                        <small>All on shift</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OVERVIEW GRID -->
+            <div class="overview-grid">
+
+                <!-- TODAY'S APPOINTMENTS -->
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <div>
+                            <span class="card-label">TODAY</span>
+                            <h3>Upcoming Appointments</h3>
+                        </div>
+                        <button class="text-btn"
+                                type="button"
+                                data-section="appointments"
+                                aria-controls="appointments">
+                            View All
+                        </button>
+                    </div>
+
+                    <div class="appointment-preview"
+                         aria-label="Next appointment: Haircut for Melaku at 4:00 PM">
+                        <div class="appointment-date">
+                            <strong>18</strong>
+                            <span>OCT</span>
+                        </div>
+                        <div class="appointment-details">
+                            <h4>Haircut + Beard — Melaku</h4>
+                            <p>
+                                <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                                <span>4:00 PM — Barber 1</span>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                                <span>+251 9XX XXX XXX</span>
+                            </p>
+                        </div>
+                        <span class="status confirmed">Confirmed</span>
+                    </div>
+                </div>
+
+                <!-- PENDING APPROVALS -->
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <div>
+                            <span class="card-label">ACTION NEEDED</span>
+                            <h3>Pending Approvals</h3>
+                        </div>
+                        <button class="text-btn"
+                                type="button"
+                                data-section="appointments"
+                                aria-controls="appointments">
+                            Review
+                        </button>
+                    </div>
+
+                    <div class="reward-preview">
+                        <div class="reward-circle"
+                             role="img"
+                             aria-label="5 pending appointments">
+                            <strong>5</strong>
+                            <span>PENDING</span>
+                        </div>
+                        <div class="reward-progress-content">
+                            <h4>3 appointments & 2 reward redemptions</h4>
+                            <p>Require your confirmation today.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOP BARBER -->
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <div>
+                            <span class="card-label">PERFORMANCE</span>
+                            <h3>Top Barber Today</h3>
+                        </div>
+                        <button class="text-btn"
+                                type="button"
+                                data-section="barbers"
+                                aria-controls="barbers">
+                            Details
+                        </button>
+                    </div>
+
+                    <div class="membership-mini">
+                        <div class="mini-card-logo" aria-hidden="true">B1</div>
+                        <div>
+                            <strong>Barber 1</strong>
+                            <p>7 appointments completed</p>
+                            <small>Rating: 4.9 ★</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUICK ACTIONS -->
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <div>
+                            <span class="card-label">SHORTCUTS</span>
+                            <h3>Quick Actions</h3>
+                        </div>
+                    </div>
+
+                    <p class="card-description">
+                        Manage Royal Edge operations quickly.
+                    </p>
+
+                    <div class="referral-mini">
+                        <div>
+                            <span>Add New Customer</span>
+                            <strong>Walk-in</strong>
+                        </div>
+                        <button id="addCustomerBtn"
+                                type="button"
+                                data-section="customers"
+                                aria-controls="customers"
+                                aria-label="Add new customer">
+                            <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             APPOINTMENTS
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="appointments"
+                 aria-labelledby="appointments-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">MANAGE</span>
+                    <h2 id="appointments-heading">Appointments</h2>
+                    <p>Review, confirm and manage all customer appointments.</p>
+                </div>
+                <button class="gold-btn" type="button" id="newAppointmentBtn">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                    <span>New Appointment</span>
+                </button>
+            </div>
+
+            <div class="tabs" role="tablist" aria-label="Appointment status">
+                <button class="tab active" type="button" role="tab" aria-selected="true">
+                    Pending
+                </button>
+                <button class="tab" type="button" role="tab" aria-selected="false">
+                    Confirmed
+                </button>
+                <button class="tab" type="button" role="tab" aria-selected="false">
+                    Completed
+                </button>
+                <button class="tab" type="button" role="tab" aria-selected="false">
+                    Cancelled
+                </button>
+            </div>
+
+            <div class="dashboard-card table-card">
+                <div class="table-wrapper">
+                    <table>
+                        <caption class="sr-only">All appointments</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Service</th>
+                                <th scope="col">Barber</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>18 Oct 2026</td>
+                                <td>4:00 PM</td>
+                                <td>Melaku Melie</td>
+                                <td>Haircut + Beard</td>
+                                <td>Barber 1</td>
+                                <td>300 ETB</td>
+                                <td><span class="status confirmed">Confirmed</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Reschedule</button>
+                                    <button class="danger-btn" type="button">Cancel</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>18 Oct 2026</td>
+                                <td>5:00 PM</td>
+                                <td>John Doe</td>
+                                <td>Haircut</td>
+                                <td>Barber 2</td>
+                                <td>200 ETB</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>
+                                    <button class="gold-btn small" type="button">Confirm</button>
+                                    <button class="danger-btn" type="button">Reject</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>19 Oct 2026</td>
+                                <td>10:00 AM</td>
+                                <td>Abel Tesfaye</td>
+                                <td>Premium Package</td>
+                                <td>Barber 1</td>
+                                <td>500 ETB</td>
+                                <td><span class="status confirmed">Confirmed</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Reschedule</button>
+                                    <button class="danger-btn" type="button">Cancel</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CUSTOMERS
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="customers"
+                 aria-labelledby="customers-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">CRM</span>
+                    <h2 id="customers-heading">Customers</h2>
+                    <p>View, search and manage Royal Edge customers.</p>
+                </div>
+                <button class="gold-btn" type="button" id="addCustomerTopBtn">
+                    <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                    <span>Add Customer</span>
+                </button>
+            </div>
+
+            <div class="payment-summary" aria-label="Customer summary">
+                <div class="summary-card">
+                    <span>Total Customers</span>
+                    <strong>246</strong>
+                </div>
+                <div class="summary-card">
+                    <span>Gold Members</span>
+                    <strong>68</strong>
+                </div>
+                <div class="summary-card">
+                    <span>New This Month</span>
+                    <strong>21</strong>
+                </div>
+            </div>
+
+            <div class="dashboard-card table-card">
+                <div class="table-wrapper">
+                    <table>
+                        <caption class="sr-only">Customer list</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Customer ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Membership</th>
+                                <th scope="col">Points</th>
+                                <th scope="col">Visits</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RE-10245</td>
+                                <td>Melaku Melie</td>
+                                <td>+251 9XX XXX XXX</td>
+                                <td><span class="status confirmed">Gold</span></td>
+                                <td>2,450</td>
+                                <td>24</td>
+                                <td>
+                                    <button class="outline-btn" type="button">View</button>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>RE-10246</td>
+                                <td>Abel Tesfaye</td>
+                                <td>+251 9XX XXX XXX</td>
+                                <td><span class="status pending">Silver</span></td>
+                                <td>1,320</td>
+                                <td>12</td>
+                                <td>
+                                    <button class="outline-btn" type="button">View</button>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>RE-10247</td>
+                                <td>John Doe</td>
+                                <td>+251 9XX XXX XXX</td>
+                                <td><span class="status">Bronze</span></td>
+                                <td>420</td>
+                                <td>5</td>
+                                <td>
+                                    <button class="outline-btn" type="button">View</button>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             BARBERS
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="barbers"
+                 aria-labelledby="barbers-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">TEAM</span>
+                    <h2 id="barbers-heading">Barbers</h2>
+                    <p>Manage your barbers, shifts and performance.</p>
+                </div>
+                <button class="gold-btn" type="button" id="addBarberBtn">
+                    <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                    <span>Add Barber</span>
+                </button>
+            </div>
+
+            <div class="stats-grid" aria-label="Barber stats">
+                <div class="stat-card">
+                    <div class="stat-icon gold" aria-hidden="true">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <span>Active Barbers</span>
+                        <h3>4</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green" aria-hidden="true">
+                        <i class="fa-solid fa-scissors"></i>
+                    </div>
+                    <div>
+                        <span>Cuts Today</span>
+                        <h3>28</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple" aria-hidden="true">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <span>Avg. Rating</span>
+                        <h3>4.8</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card table-card">
+                <div class="table-wrapper">
+                    <table>
+                        <caption class="sr-only">Barber list</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Shift</th>
+                                <th scope="col">Cuts Today</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Barber 1</td>
+                                <td>+251 9XX XXX XXX</td>
+                                <td>9:00 AM – 6:00 PM</td>
+                                <td>7</td>
+                                <td>4.9 ★</td>
+                                <td><span class="status confirmed">On shift</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Suspend</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Barber 2</td>
+                                <td>+251 9XX XXX XXX</td>
+                                <td>10:00 AM – 7:00 PM</td>
+                                <td>6</td>
+                                <td>4.7 ★</td>
+                                <td><span class="status confirmed">On shift</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Suspend</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Barber 3</td>
+                                <td>+251 9XX XXX XXX</td>
+                                <td>Off today</td>
+                                <td>0</td>
+                                <td>4.6 ★</td>
+                                <td><span class="status pending">Off</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Suspend</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SERVICES & PRICING
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="services"
+                 aria-labelledby="services-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">CATALOG</span>
+                    <h2 id="services-heading">Services & Pricing</h2>
+                    <p>Add, update or remove services offered by Royal Edge.</p>
+                </div>
+                <button class="gold-btn" type="button" id="addServiceBtn">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                    <span>Add Service</span>
+                </button>
+            </div>
+
+            <div class="dashboard-card table-card">
+                <div class="table-wrapper">
+                    <table>
+                        <caption class="sr-only">Service catalog</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Service</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Points Earned</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Haircut</td>
+                                <td>30 min</td>
+                                <td>200 ETB</td>
+                                <td>100</td>
+                                <td><span class="status confirmed">Active</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Disable</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Beard</td>
+                                <td>20 min</td>
+                                <td>150 ETB</td>
+                                <td>75</td>
+                                <td><span class="status confirmed">Active</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Disable</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Haircut + Beard</td>
+                                <td>45 min</td>
+                                <td>300 ETB</td>
+                                <td>150</td>
+                                <td><span class="status confirmed">Active</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Disable</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Kids Haircut</td>
+                                <td>25 min</td>
+                                <td>150 ETB</td>
+                                <td>75</td>
+                                <td><span class="status confirmed">Active</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Disable</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hair Wash</td>
+                                <td>15 min</td>
+                                <td>100 ETB</td>
+                                <td>50</td>
+                                <td><span class="status confirmed">Active</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Disable</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Premium Package</td>
+                                <td>75 min</td>
+                                <td>500 ETB</td>
+                                <td>250</td>
+                                <td><span class="status confirmed">Active</span></td>
+                                <td>
+                                    <button class="outline-btn" type="button">Edit</button>
+                                    <button class="danger-btn" type="button">Disable</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             PAYMENTS
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="payments"
+                 aria-labelledby="payments-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">FINANCIAL</span>
+                    <h2 id="payments-heading">Payments</h2>
+                    <p>Track all Royal Edge transactions and revenue.</p>
+                </div>
+                <button class="outline-btn" type="button">
+                    <i class="fa-solid fa-download" aria-hidden="true"></i>
+                    <span>Export CSV</span>
+                </button>
+            </div>
+
+            <div class="payment-summary" aria-label="Payment summary">
+                <div class="summary-card">
+                    <span>Today</span>
+                    <strong>4,200 ETB</strong>
+                </div>
+                <div class="summary-card">
+                    <span>This Week</span>
+                    <strong>28,600 ETB</strong>
+                </div>
+                <div class="summary-card">
+                    <span>This Month</span>
+                    <strong>112,400 ETB</strong>
+                </div>
+            </div>
+
+            <div class="dashboard-card table-card">
+                <div class="table-wrapper">
+                    <table>
+                        <caption class="sr-only">Payment transactions</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Transaction</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Service</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Method</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#RE784521</td>
+                                <td>02 Oct 2026</td>
+                                <td>Melaku Melie</td>
+                                <td>Haircut</td>
+                                <td>200 ETB</td>
+                                <td>Cash</td>
+                                <td><span class="status completed">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td>#RE773421</td>
+                                <td>18 Sep 2026</td>
+                                <td>Melaku Melie</td>
+                                <td>Haircut + Beard</td>
+                                <td>300 ETB</td>
+                                <td>Telebirr</td>
+                                <td><span class="status completed">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td>#RE762211</td>
+                                <td>03 Sep 2026</td>
+                                <td>Abel Tesfaye</td>
+                                <td>Premium Package</td>
+                                <td>500 ETB</td>
+                                <td>Cash</td>
+                                <td><span class="status completed">Paid</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             REWARDS MANAGEMENT
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="rewards"
+                 aria-labelledby="rewards-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">LOYALTY</span>
+                    <h2 id="rewards-heading">Rewards Management</h2>
+                    <p>Configure rewards, points rules and redemptions.</p>
+                </div>
+                <button class="gold-btn" type="button" id="addRewardBtn">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                    <span>Add Reward</span>
+                </button>
+            </div>
+
+            <div class="reward-main-card">
+                <div class="reward-big-number">
+                    <span>POINTS ISSUED (THIS MONTH)</span>
+                    <strong>18,400</strong>
+                    <small>Total redeemed: 6,200</small>
+                </div>
+                <div class="reward-level">
+                    <div class="level-title">
+                        <span>Redemption Rate</span>
+                        <strong>34%</strong>
+                    </div>
+                    <div class="progress large"
+                         role="progressbar"
+                         aria-label="Reward redemption rate"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         aria-valuenow="34"
+                         aria-valuetext="34 percent">
+                        <div class="progress-fill" style="width:34%"></div>
+                    </div>
+                    <p>6,200 points redeemed by customers</p>
+                </div>
+            </div>
+
+            <div class="reward-ways">
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <h3>Points Rules</h3>
+                    </div>
+                    <div class="earn-item">
+                        <i class="fa-solid fa-scissors" aria-hidden="true"></i>
+                        <span>Every haircut <small>100 points</small></span>
+                    </div>
+                    <div class="earn-item">
+                        <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+                        <span>Referral bonus <small>100 points</small></span>
+                    </div>
+                    <div class="earn-item">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i>
+                        <span>Feedback <small>20 points</small></span>
+                    </div>
+                    <div class="earn-item">
+                        <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+                        <span>Birthday bonus <small>200 points</small></span>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <h3>Active Rewards</h3>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon" role="img" aria-label="Scissors">✂️</div>
+                        <div>
+                            <strong>Free Haircut</strong>
+                            <small>1,000 points</small>
+                        </div>
+                        <button class="outline-btn" type="button">Edit</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon" role="img" aria-label="Beard">🧔</div>
+                        <div>
+                            <strong>Free Beard Trim</strong>
+                            <small>500 points</small>
+                        </div>
+                        <button class="outline-btn" type="button">Edit</button>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-item-icon" role="img" aria-label="Money">💰</div>
+                        <div>
+                            <strong>100 ETB Discount</strong>
+                            <small>750 points</small>
+                        </div>
+                        <button class="outline-btn" type="button">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             MEMBERSHIPS
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="memberships"
+                 aria-labelledby="memberships-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">TIERS</span>
+                    <h2 id="memberships-heading">Memberships</h2>
+                    <p>Manage membership tiers and benefits.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid" aria-label="Membership stats">
+                <div class="stat-card">
+                    <div class="stat-icon gold" aria-hidden="true">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <span>Bronze Members</span>
+                        <h3>142</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple" aria-hidden="true">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <span>Silver Members</span>
+                        <h3>36</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green" aria-hidden="true">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <span>Gold Members</span>
+                        <h3>68</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue" aria-hidden="true">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <span>Platinum Members</span>
+                        <h3>12</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card membership-levels">
+                <div class="card-heading">
+                    <h3>Membership Tiers</h3>
+                </div>
+                <div class="level-grid">
+                    <div class="level bronze">
+                        <strong>BRONZE</strong>
+                        <span>0 – 999 pts</span>
+                    </div>
+                    <div class="level silver">
+                        <strong>SILVER</strong>
+                        <span>1,000 – 1,999 pts</span>
+                    </div>
+                    <div class="level gold-level">
+                        <strong>GOLD</strong>
+                        <span>2,000 – 2,999 pts</span>
+                    </div>
+                    <div class="level platinum">
+                        <strong>PLATINUM</strong>
+                        <span>3,000+ pts</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CUSTOMER FEEDBACK
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="feedback"
+                 aria-labelledby="feedback-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">VOICE OF CUSTOMER</span>
+                    <h2 id="feedback-heading">Customer Feedback</h2>
+                    <p>Read and respond to customer feedback.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid" aria-label="Feedback stats">
+                <div class="stat-card">
+                    <div class="stat-icon gold" aria-hidden="true">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <span>Avg. Rating</span>
+                        <h3>4.8</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple" aria-hidden="true">
+                        <i class="fa-solid fa-comment"></i>
+                    </div>
+                    <div>
+                        <span>Total Reviews</span>
+                        <h3>184</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green" aria-hidden="true">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                    </div>
+                    <div>
+                        <span>Positive</span>
+                        <h3>172</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-heading">
+                    <h3>Recent Feedback</h3>
+                </div>
+                <div class="previous-feedback">
+                    <div class="feedback-item">
+                        <div class="feedback-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>Excellent haircut and very good service. — Melaku M.</p>
+                        <small>02 Oct 2026</small>
+                    </div>
+                    <div class="feedback-item">
+                        <div class="feedback-stars" role="img" aria-label="4 out of 5 stars">★★★★☆</div>
+                        <p>Good service. I enjoyed my visit. — Abel T.</p>
+                        <small>18 Sep 2026</small>
+                    </div>
+                    <div class="feedback-item">
+                        <div class="feedback-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>Best barber in town! — John D.</p>
+                        <small>15 Sep 2026</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             NOTIFICATIONS
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="notifications"
+                 aria-labelledby="notifications-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">UPDATES</span>
+                    <h2 id="notifications-heading">Notifications</h2>
+                    <p>Stay updated with system and customer activity.</p>
+                </div>
+                <button class="outline-btn" id="markRead" type="button">
+                    Mark all as read
+                </button>
+            </div>
+
+            <div class="notification-list" aria-live="polite">
+                <div class="notification unread"
+                     role="article"
+                     aria-label="Unread notification: New appointment request">
+                    <div class="notification-icon green-bg" aria-hidden="true">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <div class="notification-body">
+                        <h4>New appointment request</h4>
+                        <p>John Doe requested a Haircut for 18 Oct at 5:00 PM.</p>
+                        <small>30 minutes ago</small>
+                    </div>
+                </div>
+
+                <div class="notification unread"
+                     role="article"
+                     aria-label="Unread notification: New customer registered">
+                    <div class="notification-icon gold-bg" aria-hidden="true">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <div class="notification-body">
+                        <h4>New customer registered</h4>
+                        <p>Abel Tesfaye joined Royal Edge.</p>
+                        <small>2 hours ago</small>
+                    </div>
+                </div>
+
+                <div class="notification unread"
+                     role="article"
+                     aria-label="Unread notification: Reward redemption">
+                    <div class="notification-icon blue-bg" aria-hidden="true">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <div class="notification-body">
+                        <h4>Reward redemption</h4>
+                        <p>Melaku redeemed a Free Beard Trim (500 pts).</p>
+                        <small>Yesterday</small>
+                    </div>
+                </div>
+
+                <div class="notification"
+                     role="article"
+                     aria-label="Notification: Daily revenue goal">
+                    <div class="notification-icon purple-bg" aria-hidden="true">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="notification-body">
+                        <h4>Daily revenue goal</h4>
+                        <p>Today's revenue reached 4,200 ETB (84% of goal).</p>
+                        <small>1 day ago</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             REPORTS
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="reports"
+                 aria-labelledby="reports-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">ANALYTICS</span>
+                    <h2 id="reports-heading">Reports</h2>
+                    <p>Business insights and performance reports.</p>
+                </div>
+                <button class="outline-btn" type="button">
+                    <i class="fa-solid fa-download" aria-hidden="true"></i>
+                    <span>Export Report</span>
+                </button>
+            </div>
+
+            <div class="stats-grid" aria-label="Report summary">
+                <div class="stat-card">
+                    <div class="stat-icon green" aria-hidden="true">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <div>
+                        <span>Monthly Revenue</span>
+                        <h3>112,400 ETB</h3>
+                        <small>+14% vs last month</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon gold" aria-hidden="true">
+                        <i class="fa-solid fa-scissors"></i>
+                    </div>
+                    <div>
+                        <span>Total Cuts</span>
+                        <h3>428</h3>
+                        <small>This month</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple" aria-hidden="true">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <div>
+                        <span>New Customers</span>
+                        <h3>21</h3>
+                        <small>This month</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue" aria-hidden="true">
+                        <i class="fa-solid fa-repeat"></i>
+                    </div>
+                    <div>
+                        <span>Returning Rate</span>
+                        <h3>72%</h3>
+                        <small>Repeat customers</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-heading">
+                    <h3>Revenue Breakdown</h3>
+                </div>
+                <div class="points-history">
+                    <div>
+                        <span>
+                            <strong>Haircut Services</strong>
+                            <small>182 appointments</small>
+                        </span>
+                        <b class="points-positive" aria-label="36,400 birr">36,400 ETB</b>
+                    </div>
+                    <div>
+                        <span>
+                            <strong>Premium Packages</strong>
+                            <small>48 appointments</small>
+                        </span>
+                        <b class="points-positive" aria-label="24,000 birr">24,000 ETB</b>
+                    </div>
+                    <div>
+                        <span>
+                            <strong>Beard Services</strong>
+                            <small>96 appointments</small>
+                        </span>
+                        <b class="points-positive" aria-label="14,400 birr">14,400 ETB</b>
+                    </div>
+                    <div>
+                        <span>
+                            <strong>Kids Haircuts</strong>
+                            <small>62 appointments</small>
+                        </span>
+                        <b class="points-positive" aria-label="9,300 birr">9,300 ETB</b>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SETTINGS
+        ===================================================== -->
+        <section class="dashboard-section"
+                 id="settings"
+                 aria-labelledby="settings-heading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">SYSTEM</span>
+                    <h2 id="settings-heading">Settings</h2>
+                    <p>Manage admin account and business settings.</p>
+                </div>
+            </div>
+
+            <div class="settings-list">
+                <div class="dashboard-card setting-row">
+                    <div class="setting-icon" aria-hidden="true">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div>
+                        <h3>Business Information</h3>
+                        <p>Shop name, address, contact and hours.</p>
+                    </div>
+                    <button class="outline-btn" type="button">Edit</button>
+                </div>
+
+                <div class="dashboard-card setting-row">
+                    <div class="setting-icon" aria-hidden="true">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <div>
+                        <h3>Appointment Notifications</h3>
+                        <p>Receive alerts for new booking requests.</p>
+                    </div>
+                    <label class="switch">
+                        <span class="sr-only">Enable appointment notifications</span>
+                        <input type="checkbox" name="appointmentNotifications" checked>
+                        <span aria-hidden="true"></span>
+                    </label>
+                </div>
+
+                <div class="dashboard-card setting-row">
+                    <div class="setting-icon" aria-hidden="true">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <div>
+                        <h3>Rewards & Promotions</h3>
+                        <p>Enable or disable reward system.</p>
+                    </div>
+                    <label class="switch">
+                        <span class="sr-only">Enable rewards and promotions</span>
+                        <input type="checkbox" name="rewardsEnabled" checked>
+                        <span aria-hidden="true"></span>
+                    </label>
+                </div>
+
+                <div class="dashboard-card setting-row">
+                    <div class="setting-icon" aria-hidden="true">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3>Change Password</h3>
+                        <p>Update your admin password.</p>
+                    </div>
+                    <button class="outline-btn" type="button">Change</button>
+                </div>
+
+                <div class="dashboard-card setting-row">
+                    <div class="setting-icon" aria-hidden="true">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <div>
+                        <h3>Admin Accounts</h3>
+                        <p>Manage admin users and permissions.</p>
+                    </div>
+                    <button class="outline-btn" type="button">Manage</button>
+                </div>
+
+                <div class="dashboard-card setting-row">
+                    <div class="setting-icon danger-icon" aria-hidden="true">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <div>
+                        <h3>Reset System Data</h3>
+                        <p>Danger: this will clear all business data.</p>
+                    </div>
+                    <button class="danger-btn" type="button">Reset</button>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- .content -->
+</main>
+
+<!-- =====================================================
+     TOAST MESSAGE
+===================================================== -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+    <span id="toastMessage">Done</span>
+</div>
+
+<script src="admin-dashboard.js"></script>
+</body>
+</html>
